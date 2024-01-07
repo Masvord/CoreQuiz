@@ -37,10 +37,12 @@ function Hakkimizda() {
 
           <div className="section">
             <h2 className="aboutHead">Ekibin Geçmiş Başarılar</h2>
-            <p>&emsp;&ensp;"Boodle" planlama projesi</p>
-            <p>&emsp;&ensp;Haber Sistemi</p>
-            <p>&emsp;&ensp;CoreMarket</p>
-            <p>&emsp;&ensp;YSoftHR System</p>
+            <ul>
+              <li>"Boodle" planlama projesi</li>
+              <li>Haber Sistemi</li>
+              <li>CoreMarket</li>
+              <li>YSoft HR System</li>
+            </ul>
           </div>
                     
         </div>
