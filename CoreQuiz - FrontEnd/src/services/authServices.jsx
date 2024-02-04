@@ -32,7 +32,6 @@ class AuthService {
         Password: password,
       })
       .then((response) => {
-        // Başarılı durumda işlemleri burada yapabilirsiniz.
         console.log("Başarılı:", response.data);
         if (response) {
           localStorage.setItem("user", JSON.stringify(response.data));
@@ -40,24 +39,17 @@ class AuthService {
         return response.data;
       })
       .catch((error) => {
-        // Hata durumunda işlemleri burada yapabilirsiniz.
         console.error("Axios Error:", error);
-
-        // Hata durumunda özel bir mesaj döndürebilir veya promise'ı reject edebilirsiniz.
-        // Örneğin:
-        // return Promise.reject('Bir hata oluştu');
       });
   }
 
   getUsernameFromToken() {
     const user = JSON.parse(localStorage.getItem("user"));
-    console.log(user); // DEBUG: user objesini kontrol et
 
     if (user && user.data && user.data.token) {
       const token = user.data.token;
       const decodedToken = jwtDecode(token);
 
-      // Token içindeki istediğiniz talebe ulaşarak kullanıcı adını alabilirsiniz
       const username =
         decodedToken[
           "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name"
@@ -73,7 +65,6 @@ class AuthService {
       const token = user.data.token;
       const decodedToken = jwtDecode(token);
 
-      // Token içindeki talepler aracılığıyla kullanıcı ID'sini alabilirsiniz
       const userId =
         decodedToken[
           "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier"

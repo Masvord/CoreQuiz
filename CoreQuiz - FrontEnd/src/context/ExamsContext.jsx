@@ -1,12 +1,12 @@
-// ExamsContext.jsx
 import axios from "axios";
 import React, { createContext, useContext, useEffect, useState } from "react";
 import AuthContext from "./AuthContext";
+import AuthService from "../services/authServices"; // AuthService'ı ekleyin
 
 const ExamsContext = createContext();
 
 export const ExamsProvider = ({ children }) => {
-  const { currentUser, currentUserId } = useContext(AuthContext);
+  const { currentUser, currentUserId, setCurrentUserPointsData } = useContext(AuthContext);
   const EXAMS_API_URL = "https://localhost:44309/api/exams/";
   const QUESTION_API_URL = "https://localhost:44309/api/question/";
 
@@ -16,14 +16,12 @@ export const ExamsProvider = ({ children }) => {
   const [examId, setExamId] = useState(); // Seçilen sınavın ID'si
   const [questionIndex, setQuestionIndex] = useState(); // Seçilen sınavın ilk sorusunun ID'si
   const [questionLastIndex, setQuestionLastIndex] = useState(); // Seçilen sınavın içinde kaç soru bulunduğu
-  const [questionIdArray, setQuestionIdArray] = useState([]);
+  const [questionIdArray, setQuestionIdArray] = useState([]); // Seçilen sınavın içindeki soruların ID'lerini tutan array
   const [currentQuestion, setCurrentQuestion] = useState(1); // currentQuestion'ı ekledim
   const [questionThis, setQuestionThis] = useState(true); // setQuestionThis ekledim
-  const [selectedAnswer, setSelectedAnswer] = useState(null);
-  const [modal, setModal] = useState(false); // sonuc ekrani gosterilsin mi ?
+  const [selectedAnswer, setSelectedAnswer] = useState(null); // Sınavda seçilen şık
+  const [modal, setModal] = useState(false); // Sonuç ekranı gösterilsin mi?
 
-
-  //eger bir sinav secildikten sonra farkli bir sinav secilirse tum tutulan sinavla iligli stateler sifirlanir
   useEffect(() => {
     if (examId !== null) {
       setAllExams(null);
@@ -34,7 +32,16 @@ export const ExamsProvider = ({ children }) => {
       setQuestionIdArray([]);
     }
   }, [examId]);
-  //proje acilisinda tum sinav isimleri setAllExams de tutulur ve bu sekilde header ve examsPage componentlerinde sinav isimleri listelenir
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const response = await AuthService.getCurrentUserEnteredExams();
+      setCurrentUserPointsData(response);
+    };
+
+    fetchData();
+  }, [currentQuestion]);
+
   useEffect(() => {
     const fetchExamNames = async () => {
       try {
@@ -48,7 +55,6 @@ export const ExamsProvider = ({ children }) => {
     fetchExamNames();
   }, [examId]);
 
-  // examsPage ya da headerdaki sinav listelerinden bir sinav secilirse bu sinava ait bilgiler statelerde tutulur
   const clickExam = async (id) => {
     if (currentUser) {
       setExamId(id);
@@ -64,6 +70,7 @@ export const ExamsProvider = ({ children }) => {
         setQuestionIndex(questionIds[0]);
         setQuestionLastIndex(questionIds.length);
         setQuestionName(indexResponse.data.data[0].examName);
+        setQuestionThis(true);
 
         const response = await axios.get(
           QUESTION_API_URL +
@@ -90,32 +97,23 @@ export const ExamsProvider = ({ children }) => {
     }
   };
 
-  const answerPost= async(examId,questionId,userAnswer,userId)=> {
-    try{
+  const answerPost = async (examId, questionId, userAnswer, userId) => {
+    try {
       const response = await axios.post(
-        QUESTION_API_URL+`checkUserPointWithQuestion?examId=${examId}&questionId=${questionId}&userAnswer=${userAnswer}&userId=${userId}`, {
-          examId:examId,
-          questionId:questionId,
-          userAnswer:userAnswer,
-          userId:userId
+        QUESTION_API_URL +
+          `checkUserPointWithQuestion?examId=${examId}&questionId=${questionId}&userAnswer=${userAnswer}&userId=${userId}`,
+        {
+          examId: examId,
+          questionId: questionId,
+          userAnswer: userAnswer,
+          userId: userId,
         }
-      )
-    }catch(err){
-        console.log(err);
+      );
+    } catch (err) {
+      console.log(err);
     }
-  }
+  };
 
-/*   console.log(
-    "Kullanici id",
-    currentUserId,
-    "sinav id",
-    examId,
-    "question id",
-    questionIndex,
-    "isaretlenen cevap",
-    selectedAnswer
-  );
- */
   const sharedValuesAndMethods = {
     allExams,
     clickExam,
@@ -136,7 +134,12 @@ export const ExamsProvider = ({ children }) => {
     modal,
     setModal,
     currentUserId,
-    answerPost
+    answerPost,
+    setQuestions,
+    setQuestionName,
+    setQuestionIndex,
+    setQuestionLastIndex,
+    setQuestionIdArray
   };
 
   return (

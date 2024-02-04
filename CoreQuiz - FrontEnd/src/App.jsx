@@ -1,4 +1,3 @@
-// App.js
 import "./App.css";
 import Login from "./components/Login";
 import Home from "./components/Home";
@@ -13,6 +12,7 @@ import QuestionInfo from "./components/QuestionInfo";
 import { useContext, useEffect } from "react";
 import Result from "./components/Result";
 import Communicate from "./components/Comunicate";
+import Profile from "./components/Profile";
 
 function App() {
   return (
@@ -28,6 +28,7 @@ function App() {
         <Route path="/question/:examID/:questionID" element={<Question />} />
         <Route path="/questionInfo" element={<QuestionInfo />} />
         <Route path="/result/:userID/:examName" element={<Result/>}></Route>
+        <Route path="/user/:userID" element={<Profile/>}></Route>
         <Route path="/footer" element={<Footer />} />
       </Routes>
     </Router>

@@ -52,13 +52,15 @@ const Header = () => {
           navigate("/");
         }}
       >
-         <img src={logo} alt="Logo Bulunamadı"  width={70} height={70} style={{borderRadius:"10px"}} />
+         <img src={logo} alt=""  width={70} height={70} style={{borderRadius:"10px"}} />
 
       </div>
       <div className="nav-list">
         <ul>
           <li className="nav-item">
-            <button onClick={() => navigate("/examsPage")} className="nav-link">Sınavlar</button>
+            <button onClick={() => navigate("/examsPage")} className="nav-link">
+              Sınavlar
+            </button>
             <div className="submenu">
               <ul>
                 {allExams !== null && allExams !== undefined ? (
@@ -84,29 +86,42 @@ const Header = () => {
             </div>
           </li>
           <li className="nav-item">
-            <button onClick={() => navigate("/certificates")} className="nav-link">Sertifikalar</button>
+            <button
+              onClick={() => navigate("/certificates")}
+              className="nav-link"
+            >
+              Sertifikalar
+            </button>
           </li>
           <li className="nav-item">
-            <button onClick={() => navigate("/about")} className="nav-link">Hakkımızda</button>
+            <button onClick={() => navigate("/about")} className="nav-link">
+              Hakkımızda
+            </button>
           </li>
           <li className="nav-item">
             <button onClick={() => navigate("/comunicate")} className="nav-link">İletişim</button>
           </li>
         </ul>
       </div>
-      
       <div className="headerButtonsContainer">
         {currentUser ? (
           <div className="userOptions">
             <button className="logOutButton" onClick={handleLogout}>
               Çıkış Yap
             </button>
-            <span className="userOptionsFullName">Merhaba, {currentUser}!</span>
+            <span className="userOptionsFullName" onClick={()=>{navigate(`/user/${currentUserId}`)}}>Merhaba, {currentUser}!</span>
           </div>
         ) : (
           <>
-            <button onClick={() => navigate("/register")} className="nav-button">Kayıt Ol</button>
-            <button onClick={() => navigate("/login")} className="nav-button">Giriş Yap</button>
+            <button
+              onClick={() => navigate("/register")}
+              className="nav-button"
+            >
+              Kayıt Ol
+            </button>
+            <button onClick={() => navigate("/login")} className="nav-button">
+              Giriş Yap
+            </button>
           </>
         )}
       </div>

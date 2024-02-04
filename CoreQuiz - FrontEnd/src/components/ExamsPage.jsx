@@ -7,18 +7,19 @@ import { useNavigate } from "react-router-dom";
 
 function ExamsPage() {
   const navigate = useNavigate();
-  const { allExams, clickExam, setCurrentQuestion,currentUserId } = useContext(ExamsContext);
+  const { allExams, clickExam, setCurrentQuestion, currentUserId } =
+    useContext(ExamsContext);
   const { currentUser, currentUserPointsData } = useContext(AuthContext);
 
-  const handleClickExam = (exam,examId) => {
+  const handleClickExam = (exam, examId) => {
     if (currentUser) {
       const { examName } = exam;
-
-      if (currentUserPointsData && currentUserPointsData[examName] !== undefined) {
-        // Eğer kullanıcı daha önce bu sınava girdiyse
+      if (
+        currentUserPointsData &&
+        currentUserPointsData[examName] !== undefined
+      ) {
         navigate(`/result/${currentUserId}/${examName}`);
       } else {
-        // Eğer kullanıcı daha önce bu sınava girmediyse
         clickExam(examId);
         navigate("/questionInfo");
       }
@@ -36,7 +37,7 @@ function ExamsPage() {
             className="exam"
             key={exam.id}
             onClick={() => {
-              handleClickExam(exam,exam.id);
+              handleClickExam(exam, exam.id);
             }}
           >
             {exam.examName}{" "}
