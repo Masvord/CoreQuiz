@@ -140,7 +140,7 @@
     height: 40px;
     border-radius: 20px;
     padding: 20px;
-font-size: 16px;
+    font-size: 16px;
 }
 
 .userOptions:hover .logOutButton{

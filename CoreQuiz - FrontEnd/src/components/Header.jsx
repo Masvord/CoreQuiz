@@ -52,7 +52,7 @@ const Header = () => {
           navigate("/");
         }}
       >
-         <img src={logo} alt=""  width={70} height={70} style={{borderRadius:"10px"}} />
+         <img src={logo} alt="Logo Bulunamadı"  width={70} height={70} style={{borderRadius:"10px"}} />
 
       </div>
       <div className="nav-list">
@@ -94,6 +94,7 @@ const Header = () => {
           </li>
         </ul>
       </div>
+      
       <div className="headerButtonsContainer">
         {currentUser ? (
           <div className="userOptions">
