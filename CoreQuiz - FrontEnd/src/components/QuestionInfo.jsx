@@ -1,195 +1,85 @@
 import React, { useContext, useEffect, useState } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
+import Header from "./Header";
 import ExamsContext from "../context/ExamsContext";
-import "./Question.css";
-import { useNavigate, useParams } from "react-router-dom";
+import "./QuestionInfo.css";
+import { useNavigate } from "react-router-dom";
 
-function Question() {
-  const { questionID, examID } = useParams();
+function QuestionInfo() {
+  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
-  const {
-    questionName,
-    questions,
-    questionLastIndex,
-    nextQuestion,
-    currentQuestion,
-    setCurrentQuestion,
-    setQuestionThis,
-    examId,
-    questionIndex,
-    questionIdArray,
-    questionThis,
-    selectedAnswer,
-    setSelectedAnswer,
-    currentUserId,
-    answerPost,
-    setAllExams,
-    setQuestions,
-    setQuestionName,
-    setQuestionIndex,
-    setQuestionLastIndex,
-    setQuestionIdArray
-  } = useContext(ExamsContext);
-  const [minute, setMinute] = useState(40);
-  const [second, setSecond] = useState(0);
+  const { questionName, examId, questionIndex } = useContext(ExamsContext);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (minute > 0) {
-        if (second > 0) {
-          setSecond(second - 1);
-        } else if (second === 0) {
-          setMinute(minute - 1);
-          setSecond(59);
-        }
-      } else if (minute === 0) {
-        if (second > 0) {
-          setSecond(second - 1);
-        } else {
-          clearInterval(interval);
-          navigate(`/result/${currentUserId}/${questionName}`);
-        }
-      }
-    }, 1000);
-
-    return () => {
-      clearInterval(interval);
-    };
-  }, [minute, second, navigate]);
-
-  useEffect(() => {
-    const squares = document.querySelectorAll(".square");
-    squares.forEach((square, index) => {
-      if (index + 1 === currentQuestion) {
-        square.style.backgroundColor = "#021B35";
-        square.style.fontSize = "18px";
-      }
-    });
-  }, [selectedAnswer]);
-
-  useEffect(() => {
-    const buttons = document.querySelectorAll(".questionOption");
-    buttons.forEach((button, index) => {
-      if (button.value === selectedAnswer) {
-        button.classList.add("questionOptionClick");
-      } else {
-        button.classList.remove("questionOptionClick");
-      }
-    });
-  }, [selectedAnswer]);
-
-  useEffect(() => {
-    navigate(`/question/${examId}/${questionIndex}`);
-  }, [currentQuestion, examId, questionIndex, navigate]);
-
-  const handleClickNextQuestion = () => {
-    answerPost(examId, questionIndex, selectedAnswer, currentUserId);
-    if (selectedAnswer === null || selectedAnswer === undefined) {
-      console.error("HATA: Bir şık seçilmedi!");
-      toast.error("Lütfen bir şık seçin!");
-      return;
-    }
-    if (currentQuestion + 1 < questionIdArray.length) {
-      setCurrentQuestion((prev) => prev + 1);
-      setQuestionThis(true);
-      nextQuestion();
-      setSelectedAnswer(null);
-    } else if (currentQuestion + 1 === questionIdArray.length) {
-      setCurrentQuestion((prev) => prev + 1);
-      setQuestionThis(false);
-      nextQuestion();
-      setSelectedAnswer(null);
+    if (
+      questionName === undefined ||
+      examId === undefined ||
+      questionIndex === undefined
+    ) {
+      setLoading(true);
     } else {
-      console.error("HATA: Beklenmeyen durum!");
+      setLoading(false);
     }
-  };
-
-  const handleClickQuizFinish = () => {
-    answerPost(examId, questionIndex, selectedAnswer, currentUserId);
-    setMinute(0);
-    setSecond(0);
-    navigate(`/result/${currentUserId}/${questionName}`);
-    setCurrentQuestion(1);
-setQuestionThis(null);
-  };
-  
+  });
 
   return (
-    <div className="questionContainer">
-      <ToastContainer />
-      <div className="questionHeaderAndTimer">
-        <h3 className="questionHeader">
-          {questionName} {currentQuestion} \ {questionLastIndex}
-        </h3>
-        <div className="timeSection">
-          {minute >= 10 ? minute : `0${minute}`}:{second >= 10 ? second : `0${second}`}
-        </div>
-      </div>
-      <div className="questionSectionContainer">
-        <div className="questionLeftSection">
-          <div className="questionText">{questions?.questionText}</div>
-          <div className="answerOptions">
+    <div>
+      {loading ? (
+        <div>Loading</div>
+      ) : (
+        <div className="questionInfoContainer">
+          <Header />
+          <div className="questionInfoMain">
+            <h1 className="head">{questionName} Testi</h1>
+            <div className="questionInfoSection">
+              <div className="questionInfoLeftSection">
+                <h2 className="questionInfoLeftSectionHeader">
+                  40 Dakikada Kendini Test Et!
+                </h2>
+              </div>
+              <span className="cizgi"></span>
+              <div className="questionInfoRightSection">
+                <nav className="questionInfoRightSectionTop">
+                  <ul>
+                    <h4 className="rightSectionItem rightSectionItemfs">
+                      Tamamen Ücretsiz
+                    </h4>
+                    <h4 className="rightSectionItem rightSectionItemfs">
+                      {questionName} Alanında Kendini Test Et!
+                    </h4>
+                    <h4 className="rightSectionItem rightSectionItemfs">
+                      Eğer Başarılı Olursan Sertifika Kazan!
+                    </h4>
+                  </ul>
+                </nav>
+                <nav className="questionInfoRightSectionBottom">
+                  <ul>
+                    <h2 className="rightSectionItem">
+                      Önceki soruya dönülemez.
+                    </h2>
+                    <h2 className="rightSectionItem">
+                      Yanlış cevaplar doğru cevapları etkilemez.
+                    </h2>
+                    <h2 className="rightSectionItem">
+                      Zamanında tamamlanmayan sınavlar otomatik olarak kapanır.
+                    </h2>
+                    <h2 className="rightSectionItem">
+                    İnternet veya elektronik arıza, yanlış çıkış durumunda değerlendirme yapılır, tekrar giriş izni verilmez.
+                    </h2>
+                  </ul>
+                </nav>
+              </div>
+            </div>
             <button
-              className="questionOption"
-              value={questions?.answer1}
-              onClick={(e) => {
-                setSelectedAnswer(e.target.value);
-              }}
+              className="questionInfoButton"
+              onClick={() => navigate(`/question/${examId}/${questionIndex}`)}
             >
-              {questions?.answer1}
-            </button>
-            <button
-              className="questionOption"
-              value={questions?.answer2}
-              onClick={(e) => {
-                setSelectedAnswer(e.target.value);
-              }}
-            >
-              {questions?.answer2}
-            </button>
-            <button
-              className="questionOption"
-              value={questions?.answer3}
-              onClick={(e) => {
-                setSelectedAnswer(e.target.value);
-              }}
-            >
-              {questions?.answer3}
-            </button>
-            <button
-              className="questionOption"
-              value={questions?.answer4}
-              onClick={(e) => {
-                setSelectedAnswer(e.target.value);
-              }}
-            >
-              {questions?.answer4}
+              Sınava Başla
             </button>
           </div>
         </div>
-        <div className="questionRightSection">
-          {Array.from({ length: questionLastIndex }, (_, index) => (
-            <div key={index} className="square">
-              {index + 1}
-            </div>
-          ))}
-        </div>
-      </div>
-      {questionThis ? (
-        <button
-          className="nextQuestionButton"
-          onClick={() => handleClickNextQuestion()}
-        >
-          Sonraki Soru
-        </button>
-      ) : (
-        <button className="nextQuestionButton" onClick={handleClickQuizFinish}>
-          Sinavi Bitir
-        </button>
       )}
     </div>
   );
 }
 
-export default Question;
+export default QuestionInfo;

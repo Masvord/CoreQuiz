@@ -9,17 +9,27 @@ function Footer() {
     return (
 <div className="footer">
     <ul className="footerOptions">
-          <li className="footerOption">
-            <button onClick={() => navigate("/certificates")} className="nav-link">Sertifikalar</button>
+    <li className="footerOption">
+            <button
+              onClick={() => navigate("/certificates")}
+              className="nav-link"
+            >
+              Sertifikalar
+            </button>
           </li>
           <li className="footerOption">
-            <button onClick={() => navigate("/about")} className="nav-link">Hakkımızda</button>
+            <button
+              onClick={() => navigate("/hakkimizda")}
+              className="nav-link"
+            >
+              Hakkımızda
+            </button>
           </li>
           <li className="footerOption">
             <button onClick={() => navigate("/comunicate")} className="nav-link">İletişim</button>
           </li>
     </ul>
-  <div className="socialMedia">
+<div className="socialMedia">
       <div className="facebook">
         <a href="https://www.facebook.com/" target="_blank" rel="noopener noreferrer">
           <FontAwesomeIcon icon={faFacebook} color="white"/>
