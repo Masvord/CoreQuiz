@@ -58,9 +58,9 @@ function Communicate() {
         </AccordionItem>
 
         <AccordionItem>
-          <AccordionHeader targetId="2">Berke ÇELİKEL&nbsp; - &nbsp;Back-End</AccordionHeader>
+          <AccordionHeader targetId="2">Cemre Gözde UYAR&nbsp; - &nbsp;Back-End</AccordionHeader>
           <AccordionBody accordionId="2">
-            <strong>&#39;202003011027@dogus.edu.tr&#39;</strong>
+            <strong>&#39;202103011111@dogus.edu.tr&#39;</strong>
           </AccordionBody>
         </AccordionItem>
 

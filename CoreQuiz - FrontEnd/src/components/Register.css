@@ -19,7 +19,7 @@
 
 .registerSection {
     width: 450px;
-    height: 540px;
+    height: 545px;
     background: hsla(212, 35%, 58%, 1);
 
     background: linear-gradient(90deg, hsla(212, 35%, 58%, 1) 0%, hsla(218, 32%, 80%, 1) 100%);
@@ -37,6 +37,7 @@
 
 .topSection {
     color: #EEEDED;
+    /* Kayıt ol yazısı */
     font-size: 20px;
     word-spacing: 1px;
     margin-bottom: 20px;
@@ -48,6 +49,7 @@
 
 .topSection>span {
     color: #021B35;
+    /* Kayıt ol yazısı */
 }
 
 .inputBox {
@@ -63,6 +65,7 @@
     background: transparent;
     border: none;
     border-bottom: 2px solid #fff;
+    /* Inputların satır rengi */
     outline: none;
     color: #fff;
     font-size: 1em;
@@ -70,7 +73,8 @@
 }
 
 .inputBox input:focus {
-    border-bottom: 2px solid rgb(5, 15, 26);
+    border-bottom: 2px solid rgb(42, 60, 80);
+    /* Input satırlarıyla etkileşime geçince olan renk */
 }
 
 .inputBox label {
@@ -79,6 +83,7 @@
     padding: 10px 0;
     pointer-events: none;
     color: #fff;
+    /* Input yazılarırının rengi */
     text-transform: uppercase;
 }
 
@@ -92,7 +97,9 @@
 .inputBox:focus-within label span,
 .inputBox input:valid~label span {
     text-shadow: 1px 1px 1px black;
-    color: rgb(5, 15, 26);
+    /* Input belirteç yazılarının gölgelendirmesi */
+    color: rgb(26, 5, 5);
+    /* Input belirteç yazıları, içi doluyken olan rengi */
     letter-spacing: 0.15em;
     display: inline-block;
     transition: transform 0.3s ease-in-out;
@@ -126,7 +133,9 @@
     cursor: pointer;
     margin-top: 10px;
     color: #EEEDED;
+    /* Kayıt Ol Yazısı */
     background-color: #021B35;
+    /* Buton Rengi */
     border: none;
     height: 50px;
     width: 47vh;
@@ -139,12 +148,13 @@
 .registerButton:hover {
     color: #021B35;
     background-color: #EEEDED;
+    /* Buton efekti */
 }
 .navigateSection{
     display: flex;
     justify-content: center;
     align-items: center;
-    color: #021B35;
+    color: #ffffff;
     font-size: smaller;
     text-decoration: none;
     margin-top: 10px;
@@ -153,6 +163,7 @@
     border: none;
     background-color: transparent;
     color:#1c2630;
+    /* En Alttaki giriş yap yazısı */
     font-size: 16px;
     font-weight: 600;
 }

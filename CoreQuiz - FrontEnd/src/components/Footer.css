@@ -1,10 +1,9 @@
 .footer{
-background-color: #021B35;
-padding: 20px;
-display: flex;
-align-items: center;
-justify-content: space-between;
-
+    background-color: #021B35;
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .footerOptions{
@@ -14,14 +13,17 @@ justify-content: space-between;
     align-items: center;
     gap: 20px;
 }
+
 .footerOption,.footerOptions button{
     color: lightslategray;
 }
+
 .footerOptions .footerOption:hover{
     transition: 300ms all;
     cursor: pointer;
-color: #fff;
+    color: #fff;
 }
+
 .socialMedia {
     bottom: 0;
     transform: translateX(-50%,-50%);

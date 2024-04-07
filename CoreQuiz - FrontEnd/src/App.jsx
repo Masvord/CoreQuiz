@@ -10,10 +10,10 @@ import Footer from "./components/Footer";
 import ExamsPage from "./components/ExamsPage";
 import Question from "./components/Question";
 import QuestionInfo from "./components/QuestionInfo";
-import { useContext, useEffect } from "react";
 import Result from "./components/Result";
 import Communicate from "./components/Comunicate";
 import Profile from "./components/Profile";
+import FAQ from "./components/FAQ";
 
 function App() {
   return (
@@ -22,6 +22,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/certificates" element={<Certificate />} />
         <Route path="/comunicate" element={<Communicate />} />
+        <Route path="/faq" element = {<FAQ/>}/>
         <Route path="/examsPage" element={<ExamsPage />} />
         <Route path="/about" element={<Hakkimizda />} />
         <Route path="/login" element={<Login />} />

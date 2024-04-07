@@ -67,8 +67,8 @@ const Header = () => {
                   allExams.map((exam) => {
                     return (
                       <li key={exam.id}>
-                        <a
-                          href="#"
+                        <a 
+                          href="#" 
                           key={exam.id}
                           onClick={() => {
                             handleClickExam(exam,exam.id);
@@ -86,42 +86,29 @@ const Header = () => {
             </div>
           </li>
           <li className="nav-item">
-            <button
-              onClick={() => navigate("/certificates")}
-              className="nav-link"
-            >
-              Sertifikalar
-            </button>
+            <button onClick={() => navigate("/certificates")} className="nav-link">Sertifikalar</button>
           </li>
           <li className="nav-item">
-            <button onClick={() => navigate("/about")} className="nav-link">
-              Hakkımızda
-            </button>
+            <button onClick={() => navigate("/about")} className="nav-link">Hakkımızda</button>
           </li>
           <li className="nav-item">
             <button onClick={() => navigate("/comunicate")} className="nav-link">İletişim</button>
+          </li>
+          <li className="nav-item">
+            <button onClick={() => navigate("/faq")} className="nav-link">SSS</button>
           </li>
         </ul>
       </div>
       <div className="headerButtonsContainer">
         {currentUser ? (
           <div className="userOptions">
-            <button className="logOutButton" onClick={handleLogout}>
-              Çıkış Yap
-            </button>
+            <button className="logOutButton" onClick={handleLogout}>Çıkış Yap</button>
             <span className="userOptionsFullName" onClick={()=>{navigate(`/user/${currentUserId}`)}}>Merhaba, {currentUser}!</span>
           </div>
         ) : (
           <>
-            <button
-              onClick={() => navigate("/register")}
-              className="nav-button"
-            >
-              Kayıt Ol
-            </button>
-            <button onClick={() => navigate("/login")} className="nav-button">
-              Giriş Yap
-            </button>
+            <button onClick={() => navigate("/register")} className="nav-button">Kayıt Ol</button>
+            <button onClick={() => navigate("/login")} className="nav-button">Giriş Yap</button>
           </>
         )}
       </div>
