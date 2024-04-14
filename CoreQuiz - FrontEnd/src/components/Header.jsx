@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import AuthService from "../services/authServices";
 import ExamsContext from "../context/ExamsContext";
 import AuthContext from "../context/AuthContext";
-import logo from '../images/Logo.webp';
+import logo from '../images/LOGO-3.webp';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -52,7 +52,8 @@ const Header = () => {
           navigate("/");
         }}
       >
-         <img src={logo} alt=""  width={70} height={70} style={{borderRadius:"10px"}} />
+         <img src={logo} alt=""  width={120} height={90} style={{borderRadius:"10px"}} />
+         <p className="ad-text">Yeteneklerinizi geliştirin, CoreCampus'ta başlayın!</p>
 
       </div>
       <div className="nav-list">
