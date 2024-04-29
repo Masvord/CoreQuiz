@@ -1,3 +1,4 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faTwitter, faGoogle, faInstagram, faYoutube } from '@fortawesome/free-brands-svg-icons';
@@ -9,16 +10,23 @@ function Footer() {
 <div className="footer">
     <ul className="footerOptions">
     <li className="footerOption">
-            <button onClick={() => navigate("/certificates")} className="nav-link">Sertifikalar</button>
+            <button
+              onClick={() => navigate("/certificates")}
+              className="footerLink"
+            >
+              Sertifikalar
+            </button>
           </li>
           <li className="footerOption">
-            <button onClick={() => navigate("/hakkimizda")} className="nav-link">Hakkımızda</button>
+            <button
+              onClick={() => navigate("/hakkimizda")}
+              className="footerLink"
+            >
+              Hakkımızda
+            </button>
           </li>
           <li className="footerOption">
-            <button onClick={() => navigate("/comunicate")} className="nav-link">İletişim</button>
-          </li>
-          <li className="footerOption">
-            <button onClick={() => navigate("/faq")} className="nav-link">SSS</button>
+            <button onClick={() => navigate("/comunicate")} className="footerLink">İletişim</button>
           </li>
     </ul>
 <div className="socialMedia">

@@ -1,4 +1,4 @@
-// import React, { useState } from 'react'
+import React, { useState } from 'react'
 import "./FAQ.css";
 import Header from './Header';
 import Footer from './Footer';
@@ -7,17 +7,17 @@ import {Accordion, AccordionBody, AccordionHeader, AccordionItem, UncontrolledAc
 
 function FAQ(){
 
-    // const [open, setOpen] = useState('');
-    // const toggle = (id) => {
-    //   if (open === id) {
-    //     setOpen();
-    //   } else {
-    //     setOpen(id);
-    //   }
-    // }
+     const [open, setOpen] = useState('');
+     const toggle = (id) => {
+       if (open === id) {
+         setOpen();
+       } else {
+         setOpen(id);
+       }
+     }
 
   return (
-    <div>
+    <div >
         <Header/>
         <div className='titleContainer'>
             <h1>Sıkça Sorulan Sorular</h1>
@@ -25,9 +25,9 @@ function FAQ(){
 
 
 
-        {/* <div className='accordionField'> */}
-            {/* <Accordion flush open={open} toggle={toggle}> */}
-            <UncontrolledAccordion stayOpen className='UncontrolledAccordion'>
+        <div className='accordionField'>
+          <Accordion flush open={open} toggle={toggle}> 
+            {/* <UncontrolledAccordion stayOpen className='UncontrolledAccordion'> */}
 
                 <AccordionItem className='AccordionField'>
                     <AccordionHeader targetId="1"><strong>CoreCampus Nedir?</strong></AccordionHeader>
@@ -78,12 +78,13 @@ function FAQ(){
                     </AccordionBody>
                 </AccordionItem>
 
-                
-                {/* </Accordion> */}
-            </UncontrolledAccordion>
-        {/* </div>       */}
+                {/* </UncontrolledAccordion> */}
+                 </Accordion>
+        </div>     
 
-        <Footer/>
+   
+    <Footer/>
+
     </div>      
   );
 }

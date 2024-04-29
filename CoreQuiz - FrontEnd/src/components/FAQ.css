@@ -15,10 +15,8 @@
 }
 
 .accordionField{
-    height: 92vh; 
-    /* 92 bütün cevaplar açıkken tam */
+    height:52vh;
 
-    background-color: bisque;
 }
 
 .UncontrolledAccordion{
@@ -36,7 +34,4 @@
 .accordion-body{
     color: #ff8e3c;
 }
-
-
-
 
