@@ -2,16 +2,27 @@ import React from "react";
 import Header from "./Header";
 import "./Hakkimizda.css";
 import Footer from "./Footer";
-import banner from "../image/about-banner.png"
-import lessons from "../image/dersler.png"
-import exam from "../image/sınav.png"
-import wrapping from "../image/3d-glassy-iridescent-connections-in-a-glass-molecule-1.png"
-import completion from "../image/ders tamamlama.png"
+import banner from "../image/about-banner.png";
+import lessons from "../image/dersler.png";
+import exam from "../image/sınav.png";
+import wrapping from "../image/3d-glassy-iridescent-connections-in-a-glass-molecule-1.png";
+import completion from "../image/ders-tamamlama.png"
 import success from "../image/sertifika.png"
-
-
+import {useSpring, animated} from "react-spring"; 
+// npm i react-spring
 
 function Hakkimizda() {
+
+    function Number({n}){
+        const {number} = useSpring({
+            from: {number : 0},
+            number: n,
+            delay:200,
+            config: {mass: 1, tension: 25, friction:10}, 
+        });
+        return <animated.div>{number.to((n) => n.toFixed(0))}</animated.div>
+    }
+
   return (
     <div classNameName="aboutContainer">
       <Header />
@@ -33,15 +44,18 @@ function Hakkimizda() {
                         </p>
                         <ul className="stats-list">
                             <li className="stats-card">
-                                <p className="h3 stats-title">9875</p>
+                                <p className="h3 stats-title"><Number n={9785}/></p>
+                                {/* <p className="h3 stats-title">9875</p> */}
                                 <p className="stats-text">Kayıtlı Öğrenci</p>
                             </li>
                             <li className="stats-card">
-                                <p className="h3 stats-title">185</p>
+                                <p className="h3 stats-title"><Number n={185}/></p>
+                                {/* <p className="h3 stats-title">185</p> */}
                                 <p className="stats-text">Farklı Alan</p>
                             </li>
                             <li className="stats-card">
-                                <p className="h3 stats-title">1162</p>
+                                <p className="h3 stats-title"><Number n={1162}/></p>
+                                {/* <p className="h3 stats-title">1162</p> */}
                                 <p className="stats-text">Kazanılan Sertifika</p>
                             </li>
                         </ul>

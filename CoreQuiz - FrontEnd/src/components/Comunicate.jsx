@@ -1,10 +1,5 @@
 import React, { useState } from 'react';
-import {
-  Accordion,
-  AccordionBody,
-  AccordionHeader,
-  AccordionItem,
-} from 'reactstrap';
+import { Accordion, AccordionBody, AccordionHeader, AccordionItem } from 'reactstrap';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { useNavigate } from 'react-router-dom';
 import { FaMapMarkerAlt } from 'react-icons/fa';
@@ -45,7 +40,7 @@ function Communicate() {
       <div className='containerMap'>
         <div className="mapAndListContainer">
           <div className="mapContainer">
-            <LoadScript googleMapsApiKey="AIzaSyBBO4nI7D5t0Db_42E8YXuqFezNV76OyR8"> {/* API key'i kendinizle değiştirin */}
+            <LoadScript googleMapsApiKey="AIzaSyCMzHtFT3LUWzZUTe9Q8DC4vojTRarOFuc"> {/* API key'i kendinizle değiştirin */}
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={position}

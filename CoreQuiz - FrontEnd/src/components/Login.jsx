@@ -98,7 +98,7 @@ function Login() {
             Giriş Yap
           </button>
         </div>
-        <a className="navigateSection">Hesabınız Yok Mu? <button onClick={()=>{navigate("/register")}}>Kayıt ol!</button></a>
+        <a className="navigateSection">Hesabınız Yok Mu?&nbsp;<button onClick={()=>{navigate("/register")}}><u>Kayıt ol!</u></button></a>
       </section>
     </main>
   );

@@ -46,14 +46,10 @@ const Header = () => {
 
   return (
     <div className="header">
-      <div
-        className="logo"
-        onClick={() => {
-          navigate("/");
-        }}
-      >
+      <div className="logo" onClick={() => {navigate("/");}}>
          <img src={logo} alt=""  width={120} height={90} style={{borderRadius:"10px"}} />
       </div>
+      
       <div className="nav-list">
         <ul>
         <li className="nav-item">

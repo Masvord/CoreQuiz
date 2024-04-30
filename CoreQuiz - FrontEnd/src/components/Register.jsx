@@ -98,7 +98,7 @@ function Register() {
             Kayıt Ol
           </button>
         </div>
-        <a className="navigateSection">Hesabınız Var Mı? <button onClick={()=>{navigate("/login")}}>Giriş Yap!</button></a>
+        <a className="navigateSection">Hesabınız Var Mı?&nbsp;<button onClick={()=>{navigate("/login")}}><u>Giriş Yap!</u></button></a>
       </section>
     </main>
   );

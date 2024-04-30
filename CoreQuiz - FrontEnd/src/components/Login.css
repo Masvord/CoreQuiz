@@ -30,7 +30,8 @@
 
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#6D90B9", endColorstr="#BBC7DC", GradientType=1);
     border-radius: 5px;
-    padding: 3vw;
+    /* padding: 3vw; */
+    padding: 30px;
     flex-direction: column;
     text-align: center;
 }

@@ -2,9 +2,12 @@
     height: 20vh;
     display: flex;
     padding: 40px;
-    background-color: #eff0f3;
+    margin: 10px;
+    background-color: #FEF1F0;
     align-items: center;
     justify-content:center; 
+    border-radius: 15px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
     /* Flex-start ile başa çekebiliriz. */
 }
 
@@ -14,13 +17,18 @@
     font-weight: bold;
 }
 
-.accordionField{
-    height:52vh;
 
+.accordion-button{
+    font-size: 23px;
 }
 
-.UncontrolledAccordion{
-    margin: 5px auto;
+
+.AccordionHeader{
+    font-size: 116px;
+}
+
+.ControlledAccordion{
+    margin: 15px auto;
     width:95%;
     display: flex;
     justify-content: flex-start;
@@ -32,6 +40,6 @@
 }
 
 .accordion-body{
-    color: #ff8e3c;
+    
 }
 

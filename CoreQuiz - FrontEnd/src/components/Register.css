@@ -30,9 +30,12 @@
 
     filter: progid: DXImageTransform.Microsoft.gradient(startColorstr="#6D90B9", endColorstr="#BBC7DC", GradientType=1);
     border-radius: 5px;
-    padding: 3vw;
+    /* padding: 3vw; */
+    padding : 30px;
     flex-direction: column;
     text-align: center;
+
+    /* Değişti */
 }
 
 .topSection {
@@ -53,9 +56,12 @@
 }
 
 .inputBox {
-    position: relative;
+    /* position: relative; */
+    display: flex;
+    flex-direction: row;
     width: 370px;
     margin-bottom: 40px;
+    /* Değişti */
 }
 
 .inputBox input {
@@ -67,13 +73,14 @@
     border-bottom: 2px solid #817c7c;
     /* Inputların satır rengi */
     outline: none;
-    color: #ff8e3c;
+    color: #312d29b6;
     font-size: 1em;
     letter-spacing: 0.15em;
 }
 
 .inputBox input:focus {
     border-bottom: 2px solid #ff8e3c;
+    font-weight: 700;
     /* Input satırlarıyla etkileşime geçince olan renk */
 }
 
@@ -96,7 +103,7 @@
 
 .inputBox:focus-within label span,
 .inputBox input:valid~label span {
-    text-shadow: 1px 1px 1px #817c7c;
+    text-shadow: 1px 1px 1px #ff8e3c;
     /* Input belirteç yazılarının gölgelendirmesi */
     color: #ff8e3c;
     /* Input belirteç yazıları, içi doluyken olan rengi */
