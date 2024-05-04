@@ -4,13 +4,36 @@
   flex-direction: column;
   gap: 20px;
 }
+
+@keyframes fadeInOut {
+  0% {
+    opacity: 0;
+    transform: translateX(50px);
+  }
+  10%, 90% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  95%, 100% {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+}
+
+
+.fadeInOut {
+  opacity: 0;
+  animation: fadeInOut 7s ease-in-out forwards;
+}
+
 .certificateCard {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-margin: 20px;
+  margin: 20px;
 }
+
 .certficate {
   min-height: 80vh;
   width: 100%;
@@ -18,8 +41,8 @@ margin: 20px;
   display: flex;
   padding: 40px;
   margin: auto;
-  color: #fff;
-  background: #021b35; 
+  color: #ff8e3c;
+  background: #fef1f0; 
   border: 1.5px solid #1d70c9;
   align-items: center;
   justify-content: center;
@@ -34,6 +57,7 @@ margin: 20px;
   display: flex;
   flex-direction: column;
 }
+
 .certificateHead {
   font-size: 40px;
   margin-bottom: 120px;
@@ -41,16 +65,22 @@ margin: 20px;
   font-family: sofia-pro, sans-serif;
   font-style: normal;
   font-weight: 700;
-    letter-spacing: 1.1px;
+  letter-spacing: 1.1px;
 }
+
 .certificateDescription{
   font-size: 14px;
-  color: #e3e3e3;
+  color: #ff8e3c  ;
   letter-spacing: 1px;
   font-family: dunbar-low, sans-serif;
   font-style: normal;
   font-weight: 200;
+
+  /* Description Animasyonu (fadeIn ve Keyframes Satır 8 - 24 Arası) */ 
+  opacity: 0;
+  animation: fadeInOut 7s ease-in-out;
 }
+
 .certificateDescriptionBold{
   font-weight: 600;
   font-size: 15px;
@@ -69,3 +99,7 @@ height: 350px;
 border-radius: 20px;
 border: 1px solid lightgray;
 }
+
+
+
+
