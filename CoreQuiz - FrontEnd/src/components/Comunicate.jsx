@@ -31,7 +31,7 @@ function Communicate() {
   const navigate = useNavigate(); // useNavigate hook'unu ekledik
 
   const handleFaqClick = () => {
-    navigate('/faq'); // Butona tıklandığında /SSS sayfasına yönlendirme
+    navigate('/faq'); 
   }
 
   return (
@@ -40,7 +40,7 @@ function Communicate() {
       <div className='containerMap'>
         <div className="mapAndListContainer">
           <div className="mapContainer">
-            <LoadScript googleMapsApiKey="AIzaSyCMzHtFT3LUWzZUTe9Q8DC4vojTRarOFuc"> {/* API key'i kendinizle değiştirin */}
+            <LoadScript googleMapsApiKey="..."> {/* API key'i kendinizle değiştirin */}
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
                 center={position}

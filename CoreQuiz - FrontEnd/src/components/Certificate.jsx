@@ -70,8 +70,6 @@ function Certificate() {
                 </h6>
               </div>
               
-              {/* Sertifikaların geçişlerinde problem var. */}
-              {/* Serifika süresi ve yazı süresi konuşulacak. */ }
               <div className="certificateRightSection">
                   <Carousel onSelect={updateDescriptionAndTitle} interval={6000} wrap={true} controls={true}> 
 
